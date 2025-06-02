@@ -35,7 +35,7 @@
             <td onclick="btnACPressed()">AC</td>
             <td onclick="operatorBtnPressed('/')">/</td>
         </tr>
-            <td colspan="4" onclick="operatorBtnPressed('=')">=</td>
+            <td colspan="4" onclick="equalsBtnPressed()">=</td>
         </tr>
     </table>
 
@@ -59,13 +59,42 @@
             document.getElementById("inputBox").value = "0"; // Clear input box
             newLine = true; // Reset to allow new input
         }
-        // Event handler for when an operator button is pressed
+        // Event handler for operator buttons pressed. Function to handle the operator buttons
         function operatorBtnPressed(operator) {
             currentOperator = operator; // Store the current operator
             value1 = parseInt(document.getElementById("inputBox").value); // Get the current value from the input box
             newLine = true; // Set to true to allow new input for the next number
         }
         
+        // Event handler for when the equals button is pressed
+        function equalsBtnPressed(){
+            var value2 = parseInt(document.getElementById("inputBox").value); // Get the second value from the input box
+            var finalTotal; // Variable to store the result
+
+            // Perform the operation based on the current operator
+            switch(currentOperator) {
+                case '+':
+                    finalTotal = value1 + value2;
+                    break;
+                case '-':
+                    finalTotal = value1 - value2;
+                    break;
+                case '*':
+                    finalTotal = value1 * value2;
+                    break;
+                case '/':
+                    finalTotal = value1 / value2;
+                    break;
+                default:
+                    finalTotal = "Error"; // Handle unexpected operator
+            }
+
+            document.getElementById("inputBox").value = finalTotal; // Display the result in the input box
+            newLine = true; // Reset for next operation
+
+            //value1 = finalTotal; // Update value1 to the result for potential further calculations
+        }
+
     </script>
 </body>
 </html>
