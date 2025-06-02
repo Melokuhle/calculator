@@ -32,7 +32,7 @@
         <tr>
             <td colspan="2" onclick="digiBtnPressed(0)">0</td>
 
-            <td>AC</td>
+            <td onclick="btnACPressed()">AC</td>
             <td>/</td>
         </tr>
             <td colspan="4">=</td>
@@ -40,9 +40,9 @@
     </table>
 
     <script>
-        var newLine = true; // Variable to hold newline character
+        var newLine = true; // Boolean variable. Determines if the next thing the user types should be on the next line
 
-        // Function to handle button presses
+        // Event handler for any digit button pressed. Function to handle the digit buttons
         function digiBtnPressed(button){
 
             if (newLine){
@@ -51,10 +51,14 @@
             } else { 
                 var currentValue = document.getElementById("inputBox").value; 
                 document.getElementById("inputBox").value = currentValue + button;
-                
             }
-  
         }
+        // Event handler for when the AC button is pressed. Function to handle the clear button
+        function btnACPressed(){ 
+            document.getElementById("inputBox").value = "0"; // Clear input box
+            newLine = true; // Reset to allow new input
+        }
+        
     </script>
 </body>
 </html>
