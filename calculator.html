@@ -17,31 +17,32 @@
             <td onclick="digiBtnPressed(7)">7</td>
             <td onclick="digiBtnPressed(8)">8</td>
             <td onclick="digiBtnPressed(9)">9</td>
-            <td>x</td>
+            <td onclick="operatorBtnPressed('*')">x</td>
         </tr>
             <td onclick="digiBtnPressed(4)">4</td>
             <td onclick="digiBtnPressed(5)">5</td>
             <td onclick="digiBtnPressed(6)">6</td>
-            <td>-</td>
+            <td onclick="operatorBtnPressed('-')">-</td>
         <tr>
             <td onclick="digiBtnPressed(1)">1</td>
             <td onclick="digiBtnPressed(2)">2</td>
             <td onclick="digiBtnPressed(3)">3</td>
-            <td>+</td><td>
+            <td onclick="operatorBtnPressed('+')">+</td><td>
         </tr>
         <tr>
             <td colspan="2" onclick="digiBtnPressed(0)">0</td>
 
             <td onclick="btnACPressed()">AC</td>
-            <td>/</td>
+            <td onclick="operatorBtnPressed('/')">/</td>
         </tr>
-            <td colspan="4">=</td>
+            <td colspan="4" onclick="operatorBtnPressed('=')">=</td>
         </tr>
     </table>
 
     <script>
         var newLine = true; // Boolean variable. Determines if the next thing the user types should be on the next line
-
+        var value1;
+        var currentOperator; // Variable to store the current operator
         // Event handler for any digit button pressed. Function to handle the digit buttons
         function digiBtnPressed(button){
 
@@ -57,6 +58,12 @@
         function btnACPressed(){ 
             document.getElementById("inputBox").value = "0"; // Clear input box
             newLine = true; // Reset to allow new input
+        }
+        // Event handler for when an operator button is pressed
+        function operatorBtnPressed(operator) {
+            currentOperator = operator; // Store the current operator
+            value1 = parseInt(document.getElementById("inputBox").value); // Get the current value from the input box
+            newLine = true; // Set to true to allow new input for the next number
         }
         
     </script>
