@@ -10,32 +10,31 @@
     <table border="1">
         <tr>
             <td colspan="4">
-                <input type="text" id="inputBox" value="0"/> <!-------->
+                <input type="text" id="inputBox" value="0"/> 
             </td>
         </tr>
         <tr>
-            <td onclick="digiBtnPressed(7)">7</td>
-            <td onclick="digiBtnPressed(8)">8</td>
-            <td onclick="digiBtnPressed(9)">9</td>
-            <td onclick="operatorBtnPressed('*')">x</td>
+            <td class="digitButton" onclick="digitBtnPressed(7)">7</td>
+            <td class="digitButton" onclick="digitBtnPressed(8)">8</td>
+            <td class="digitButton" onclick="digitBtnPressed(9)">9</td>
+            <td class="operatorButton" onclick="operatorBtnPressed('*')">x</td>
         </tr>
-            <td onclick="digiBtnPressed(4)">4</td>
-            <td onclick="digiBtnPressed(5)">5</td>
-            <td onclick="digiBtnPressed(6)">6</td>
-            <td onclick="operatorBtnPressed('-')">-</td>
+            <td class="digitButton"  onclick="digitBtnPressed(4)">4</td>
+            <td class="digitButton"  onclick="digitBtnPressed(5)">5</td>
+            <td class="digitButton"  onclick="digitBtnPressed(6)">6</td>
+            <td class="operatorButton" onclick="operatorBtnPressed('-')">-</td>
         <tr>
-            <td onclick="digiBtnPressed(1)">1</td>
-            <td onclick="digiBtnPressed(2)">2</td>
-            <td onclick="digiBtnPressed(3)">3</td>
-            <td onclick="operatorBtnPressed('+')">+</td><td>
+            <td class="digitButton" onclick="digitBtnPressed(1)">1</td>
+            <td class="digitButton" onclick="digitBtnPressed(2)">2</td>
+            <td class="digitButton" onclick="digitBtnPressed(3)">3</td>
+            <td class="operatorButton" onclick="operatorBtnPressed('+')">+</td>
         </tr>
         <tr>
-            <td colspan="2" onclick="digiBtnPressed(0)">0</td>
-
-            <td onclick="btnACPressed()">AC</td>
-            <td onclick="operatorBtnPressed('/')">/</td>
+            <td class="digitButton" colspan="2" onclick="digitBtnPressed(0)">0</td>
+            <td class="ACButton" onclick="btnACPressed()">AC</td>
+            <td class="operatorButton" onclick="operatorBtnPressed('/')">/</td>
         </tr>
-            <td colspan="4" onclick="equalsBtnPressed()">=</td>
+            <td class="operatorButton" colspan="4" onclick="equalsBtnPressed('=')">=</td>
         </tr>
     </table>
 
@@ -44,7 +43,7 @@
         var value1;
         var currentOperator; // Variable to store the current operator
         // Event handler for any digit button pressed. Function to handle the digit buttons
-        function digiBtnPressed(button){
+        function digitBtnPressed(button){
 
             if (newLine){
                 document.getElementById("inputBox").value = button; // Clear input box
@@ -85,16 +84,13 @@
                 case '/':
                     finalTotal = value1 / value2;
                     break;
-                default:
-                    finalTotal = "Error"; // Handle unexpected operator
             }
 
             document.getElementById("inputBox").value = finalTotal; // Display the result in the input box
-            newLine = true; // Reset for next operation
-
-            //value1 = finalTotal; // Update value1 to the result for potential further calculations
+            //value1 =0; // Reset value1 for the next operation
+            newLine = true; // Preparing our calculator for the next operation. Reset for next operation
+            
         }
-
     </script>
 </body>
 </html>
